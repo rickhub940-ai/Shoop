@@ -1,15 +1,29 @@
-import { db } from "../../lib/db";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-export default function handler(req, res) {
-  const { userId } = req.query;
+export default function History() {
+  const router = useRouter();
+  const { user } = router.query;
 
-  // ถ้าไม่ส่ง userId มา
-  if (!userId) {
-    return res.json([]);
-  }
+  const [data, setData] = useState([]);
 
-  // กรองเฉพาะของ user นี้
-  const history = db.purchases.filter(p => p.userId === userId);
+  useEffect(() => {
+    if (!user) return;
 
-  res.json(history);
+    fetch(`/api/history?userId=${user}`)
+      .then(res => res.json())
+      .then(setData);
+  }, [user]);
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h2>ประวัติ</h2>
+
+      {data.map((item, i) => (
+        <div key={i}>
+          <p>🔑 {item.key}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
