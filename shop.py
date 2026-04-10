@@ -2,11 +2,11 @@ import discord
 from discord import app_commands
 import json, os, re, cloudscraper
 
-token = "" ## token bot discord
-_p = "" ## number phone redeem money krb
+token = "MTQ4NDkyNTk5ODE0NjUxOTMyMA.G0mY_L.Wh1FMRy_dFGpt7XjimYIfhZerAL7VYIxNGP3Ao" ## token bot discord
+_p = "0984839629" ## number phone redeem money krb
 _url = "" ## links im embed kub
 
-admin = [111] ## id user admin id profile you 
+admin = [1426272052117241913] ## id user admin id profile you 
 
 scraper = cloudscraper.create_scraper()
 
